@@ -10,7 +10,7 @@ print("Time started: ", dt_string)
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
     with open("output.txt", "w") as output_file:
-
+        output_file.write("Asset no., Status, Last powered on,\n")
         file_count = 0
         online_count = 0
         offline_count = 0
