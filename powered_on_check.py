@@ -1,8 +1,16 @@
 import subprocess
+from datetime import datetime
+
+start = datetime.now()
+dt_string = start.strftime("%d/%m/%Y %H:%M:%S")
+print("Time started: ", dt_string)
 
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
     with open("output.txt", "w") as output_file:
+        
+
+
         for line in ip_file:
             ip_address = line.strip()
 
@@ -36,3 +44,10 @@ with open('ip_list.txt', 'r') as ip_file:
                 output_file.write(f"{ip_address} is not reachable.\n")
 
 print("Script finished.")
+
+finish = datetime.now()
+dt_string_end = finish.strftime("%d/%m/%Y %H:%M:%S")
+print("Time finished: ", dt_string_end)
+
+time_taken = finish - start
+print(f"Time taken: {time_taken}")
