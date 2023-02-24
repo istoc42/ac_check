@@ -11,7 +11,12 @@ with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
     with open("output.txt", "w") as output_file:
 
+        file_count = 0
+
         for line in ip_file:
+            # iterate file count to return number of lines checked.
+            file_count += 1
+
             ip_address = line.strip()
 
             # Run the ping command to check if the PC is reachable
@@ -43,7 +48,7 @@ with open('ip_list.txt', 'r') as ip_file:
                 # Write the output to the file
                 output_file.write(f"{ip_address} is not reachable.\n")
 
-print("Script finished.")
+print(f"Script finished. {file_count} checked.")
 
 # Get datetime stamp at end of search. Print to console.
 finish = datetime.now()
