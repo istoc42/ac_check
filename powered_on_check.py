@@ -12,9 +12,11 @@ with open('ip_list.txt', 'r') as ip_file:
     with open("output.txt", "w") as output_file:
 
         file_count = 0
+        online_count = 0
+        offline_count = 0
 
         for line in ip_file:
-            # iterate file count to return number of lines checked.
+            # Iterate counter to return number of lines checked, number of online nodes and number of offline nodes.
             file_count += 1
 
             ip_address = line.strip()
@@ -25,6 +27,7 @@ with open('ip_list.txt', 'r') as ip_file:
 
             # Check if the PC is reachable
             if ping_output.returncode == 0:
+                online_count += 1
                 # The PC is reachable, so run the "systeminfo" command to get the last boot time
                 print(f"Running systeminfo command for {ip_address}...")
                 systeminfo_output = subprocess.run(["systeminfo", f"/s", ip_address, f"/u", "shaun.hudson.a", f"/p", "hexbladewarlock"], capture_output=True) #TODO: Asking for a password at this stage in CMD
@@ -37,18 +40,19 @@ with open('ip_list.txt', 'r') as ip_file:
                         boot_time_str = line.split(":")[1].strip()
 
                         # Print the boot time
-                        print(f"The last time {ip_address} was powered on: {boot_time_str}")
+                        print(f"{ip_address}, Online, {boot_time_str}")
 
                         # Write the output to the file
-                        output_file.write(f"The last time {ip_address} was powered on: {boot_time_str}\n")
+                        output_file.write(f"{ip_address}, Online, {boot_time_str}\n")
                         break
             else:
+                offline_count += 1
                 # The PC is not reachable
-                print(f"{ip_address} is not reachable.")
+                print(f"{ip_address}, Offline.")
                 # Write the output to the file
-                output_file.write(f"{ip_address} is not reachable.\n")
+                output_file.write(f"{ip_address}, Offline.\n")
 
-print(f"Script finished. {file_count} checked.")
+print(f"Script finished. \n{file_count} PCs pinged.\n{online_count} PCs online.\n{offline_count} PCs unreachable.")
 
 # Get datetime stamp at end of search. Print to console.
 finish = datetime.now()
