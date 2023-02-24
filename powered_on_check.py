@@ -1,15 +1,15 @@
 import subprocess
 from datetime import datetime
 
+# Get datetime stamp at beginning of search. Print to console
 start = datetime.now()
+# Convert to readable date and time
 dt_string = start.strftime("%d/%m/%Y %H:%M:%S")
 print("Time started: ", dt_string)
 
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
     with open("output.txt", "w") as output_file:
-        
-
 
         for line in ip_file:
             ip_address = line.strip()
@@ -45,9 +45,14 @@ with open('ip_list.txt', 'r') as ip_file:
 
 print("Script finished.")
 
+# Get datetime stamp at end of search. Print to console.
 finish = datetime.now()
+# Convert to readable date and time
 dt_string_end = finish.strftime("%d/%m/%Y %H:%M:%S")
 print("Time finished: ", dt_string_end)
 
+# Calculate time taken to run script.
 time_taken = finish - start
-print(f"Time taken: {time_taken}")
+# Convert to readable date and time
+hours, minutes, seconds = time_taken.seconds // 3600, time_taken.seconds // 60 % 60, time_taken.seconds
+print(f"Time taken: {minutes} minutes and {seconds} seconds.")
