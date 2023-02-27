@@ -38,12 +38,13 @@ with open('ip_list.txt', 'r') as ip_file:
                     if line.startswith("System Boot Time:"):
                         # Extract the date and time from the line
                         boot_time_str = line.split(":")[1].strip()
+                        boot_time = datetime.strptime(boot_time_str, "%m/%d/%Y, %I:%M:%S %p")
 
                         # Print the boot time
-                        print(f"{ip_address}, Online, {boot_time_str}")
+                        print(f"{ip_address}, Online, {boot_time.strftime('%Y-%m-%d %H:%M:%S')}")
 
                         # Write the output to the file
-                        output_file.write(f"{ip_address}, Online, {boot_time_str}\n")
+                        output_file.write(f"{ip_address}, Online, {boot_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
                         break
             else:
                 offline_count += 1
