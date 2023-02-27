@@ -48,9 +48,9 @@ with open('ip_list.txt', 'r') as ip_file:
             else:
                 offline_count += 1
                 # The PC is not reachable
-                print(f"{ip_address}, Offline.")
+                print(f"{ip_address}, Offline,")
                 # Write the output to the file
-                output_file.write(f"{ip_address}, Offline.\n")
+                output_file.write(f"{ip_address}, Offline,\n")
 
 print(f"Script finished. \n{file_count} PCs pinged.\n{online_count} PCs online.\n{offline_count} PCs unreachable.")
 
