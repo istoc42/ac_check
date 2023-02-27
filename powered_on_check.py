@@ -7,9 +7,12 @@ start = datetime.now()
 dt_string = start.strftime("%d/%m/%Y %H:%M:%S")
 print("Time started: ", dt_string)
 
+file_name = dt_string.replace("/", "-").strip()
+file_name_final = file_name.replace(":", "-").strip()
+
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
-    with open("output.txt", "w") as output_file:
+    with open(f"ac_check_output_{file_name_final}.txt", "w") as output_file:
         output_file.write("Asset no., Status, Last powered on,\n")
         file_count = 0
         online_count = 0
