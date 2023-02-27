@@ -4,18 +4,21 @@ from datetime import datetime
 # Get datetime stamp at beginning of search. Print to console
 start = datetime.now()
 
+# Get username and password, needs admin priviliges
 username = input("User: ")
 password = input("Password: ")
+
 # Convert to readable date and time
 dt_string = start.strftime("%d/%m/%Y %H:%M:%S")
 print("Time started: ", dt_string)
 
+# Tidy up file name for Windows format
 file_name = dt_string.replace("/", "-").strip()
 file_name_final = file_name.replace(":", "-").strip()
 
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
-    with open(f"ac_check_output_{file_name_final}.txt", "w") as output_file: #TODO: Change this to open IMT inventory 
+    with open(f"ac_check_output_{file_name_final}.txt", "w") as output_file: #TODO: Change this to open IMT inventory spreadsheet
         output_file.write("Asset no., Status, Last powered on,\n")
         file_count = 0
         online_count = 0
@@ -25,6 +28,7 @@ with open('ip_list.txt', 'r') as ip_file:
             # Iterate counter to return number of lines checked, number of online nodes and number of offline nodes.
             file_count += 1
 
+            # Remove whitespace from asset numbers
             ip_address = line.strip()
 
             # Run the ping command to check if the PC is reachable
