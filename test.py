@@ -15,7 +15,7 @@ if ping_output.returncode == 0:
     for line in systeminfo_output.stdout.decode().splitlines():
         if line.startswith("System Boot Time:"):
             # Extract the date and time from the line
-            boot_time_str = line
+            boot_time_str = line.replace('System Boot Time:', '').strip()
             print(boot_time_str)
             # boot_time = datetime.strptime(boot_time_str, "%m/%d/%Y, %I:%M:%S %p")
     

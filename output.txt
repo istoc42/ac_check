@@ -1,3 +1,0 @@
-Asset no., Status, Last powered on,
-NBT14408, Offline,
-NBT15589, Offline,
