@@ -7,5 +7,6 @@ TODO: Output to Excel spreadsheet
 Change Log
 
 - Tidy up of script timer in console. Returns minutes and seconds.
-- Added file counter to end of script console message 
-- Added date and time to filename to create a new file each time the script is run
+- Added file counter to end of script console message.
+- Added date and time to filename to create a new file each time the script is run.
+- Changed to ask for username and password before beginning.

@@ -3,6 +3,9 @@ from datetime import datetime
 
 # Get datetime stamp at beginning of search. Print to console
 start = datetime.now()
+
+username = input("User: ")
+password = input("Password: ")
 # Convert to readable date and time
 dt_string = start.strftime("%d/%m/%Y %H:%M:%S")
 print("Time started: ", dt_string)
@@ -12,7 +15,7 @@ file_name_final = file_name.replace(":", "-").strip()
 
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
-    with open(f"ac_check_output_{file_name_final}.txt", "w") as output_file:
+    with open(f"ac_check_output_{file_name_final}.txt", "w") as output_file: #TODO: Change this to open IMT inventory 
         output_file.write("Asset no., Status, Last powered on,\n")
         file_count = 0
         online_count = 0
@@ -33,7 +36,7 @@ with open('ip_list.txt', 'r') as ip_file:
                 online_count += 1
                 # The PC is reachable, so run the "systeminfo" command to get the last boot time
                 print(f"Running systeminfo command for {ip_address}...")
-                systeminfo_output = subprocess.run(["systeminfo", f"/s", ip_address, f"/u", "shaun.hudson.a", f"/p", "hexbladewarlock"], capture_output=True) #TODO: Asking for a password at this stage in CMD
+                systeminfo_output = subprocess.run(["systeminfo", f"/s", ip_address, f"/u", f"{username}", f"/p", f"{password}"], capture_output=True) 
 
                 # Search for the "System Boot Time" line in the output
                 print(f'Searching for the System Boot Time for {ip_address}')
