@@ -19,7 +19,7 @@ file_name_final = file_name.replace(":", "-").strip()
 with open('ip_list.txt', 'r') as ip_file:
     # Open the output file for writing
     with open(f"output\\ac_check_output_{file_name_final}.txt", "w") as output_file: #TODO: Change this to open IMT inventory spreadsheet
-        output_file.write("Asset no., Status, Last powered on,\n")
+        output_file.write("Asset no., Status, Last powered on date, Last powered on time\n")
         file_count = 0
         online_count = 0
         offline_count = 0
