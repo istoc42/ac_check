@@ -2,8 +2,9 @@ Instructions:
 
 1. Create a folder in the same directory as the script and name it "output".
 2. Put all PC asset numbers in the ip_list.txt file. One asset number per line.
-3. Run the script. This will take about 10 minutes per 100 PCs checked.
-4. When script is complete, you will have a csv file in the "output" folder with results of the search.
+3. Run the script. 
+4. Enter your username and password for an account with admin priviliges (.a account) into the console.
+5. When script is complete, you will have a csv file in the "output" folder with results of the search.
 
 TODO: Output to Excel spreadsheet
 
